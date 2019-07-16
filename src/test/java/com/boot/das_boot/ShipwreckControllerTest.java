@@ -33,11 +33,9 @@ public class ShipwreckControllerTest {
 	@Test
 	public void testShipwreckGet() {
 //		ShipwreckController sc = new ShipwreckController();
-		
-		Optional<Shipwreck> sw = Optional.empty();
-		sw.get().setId(1L);
-//		sw.get().setId(id);
-		when(shipwreckRepository.findById(1L)).thenReturn(sw);
+		Shipwreck shipWreck = new Shipwreck();
+		shipWreck.setId(1L);
+		when(shipwreckRepository.findById(1L)).thenReturn(Optional.of(shipWreck));
 		
 		Shipwreck wreck = sc.get(1L).get();
 		assertEquals(1L, wreck.getId().longValue());
