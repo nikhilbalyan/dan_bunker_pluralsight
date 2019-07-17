@@ -2,6 +2,8 @@ package com.boot.das_boot;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
+
 
 import java.util.Optional;
 
@@ -32,12 +34,14 @@ public class ShipwreckControllerTest {
 
 	@Test
 	public void testShipwreckGet() {
-//		ShipwreckController sc = new ShipwreckController();
 		Shipwreck shipWreck = new Shipwreck();
 		shipWreck.setId(1L);
 		when(shipwreckRepository.findById(1L)).thenReturn(Optional.of(shipWreck));
 		
 		Shipwreck wreck = sc.get(1L).get();
+		
+		verify(shipwreckRepository).findById(1L);
+		
 		assertEquals(1L, wreck.getId().longValue());
 	}
 }
