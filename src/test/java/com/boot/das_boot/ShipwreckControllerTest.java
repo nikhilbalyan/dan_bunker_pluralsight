@@ -1,9 +1,10 @@
 package com.boot.das_boot;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.verify;
-
+import static org.mockito.Mockito.when;
 
 import java.util.Optional;
 
@@ -42,7 +43,8 @@ public class ShipwreckControllerTest {
 		
 		verify(shipwreckRepository).findById(1L);
 		
-		assertEquals(1L, wreck.getId().longValue());
+//		assertEquals(1L, wreck.getId().longValue());
+		assertThat(wreck.getId(), is(1L));
 	}
 }
 
